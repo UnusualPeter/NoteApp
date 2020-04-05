@@ -6,7 +6,11 @@ from .error import EmptyField, MaxCharacters
 
 # Create your views here.
 def home(request):
-    return render(request, 'notes/create_note.html')
+    notes = Notes.objects.order_by('pub_date')
+    context = {
+        'notes': notes
+    }
+    return render(request, 'notes/index.html', context)
 
 
 def new_note(request):
@@ -29,4 +33,4 @@ def new_note(request):
         # Use the Notes to create a new object and save it to the database
         Notes.objects.create(title_note=title_note, content_note=content_note)
 
-    return render(request, 'notes/create_note.html')
+    return render(request, 'notes/index.html')
