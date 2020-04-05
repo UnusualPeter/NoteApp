@@ -1,4 +1,7 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
+from django.utils import timezone
 
 from .models import Notes
 from .error import EmptyField, MaxCharacters
@@ -17,6 +20,7 @@ def new_note(request):
     # Get the data from the input and textarea in the form
     title_note = request.POST.get('title-note').strip()
     content_note = request.POST.get('content-note').strip()
+    date_note = timezone.now()
 
     try:
         if not title_note or not content_note:
@@ -31,6 +35,6 @@ def new_note(request):
         print(error_message)
     else:
         # Use the Notes to create a new object and save it to the database
-        Notes.objects.create(title_note=title_note, content_note=content_note)
+        Notes.objects.create(title_note=title_note, content_note=content_note, pub_date=date_note)
 
-    return render(request, 'notes/index.html')
+    return HttpResponseRedirect(reverse('notes:home'))
