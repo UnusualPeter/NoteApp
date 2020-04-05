@@ -1,3 +1,85 @@
 body {
-    background: red;
+    background: #f5f5f5
+}
+
+h3 {
+    font-size: 2em;
+}
+
+.mb {
+    margin-bottom: 3em;
+}
+
+.mt {
+    margin-top: 1em;
+}
+
+@media (min-width: 992px) {
+    .mt {
+        margin-top: 2em;
+    }
+    .mb {
+        margin-bottom: 3.5em;
+    }
+}
+
+/* From for notes */
+/*
+input[type="text"]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #388E3C;
+    box-shadow: 0 1px 0 0 #388E3C;
+}
+*/
+
+.input-field input[type=text]:focus,
+.materialize-textarea:focus {
+    border-bottom: 1px solid #388E3C !important;
+    box-shadow: 0 1px 0 0 #388E3C !important;
+}
+
+.input-field input[type=text].invalid {
+    border-bottom: 1px solid #F44336 !important;
+    box-shadow: 0 1px 0 0 #F44336 !important;
+}
+
+label.active {
+    color: #388E3C !important;
+}
+
+.input-field input[type=text].invalid ~ label {
+    color: #F44336 !important;
+}
+
+/* Notes */
+.note-card {
+    margin-bottom: 2em;
+    background-color: #f4ff81;
+}
+
+.note-title {
+    padding: 0;
+    border-bottom: 1px solid #e8f752;
+}
+
+.note-title i {
+    padding: .25em;
+}
+
+.note-title h2 {
+    margin: 0;
+    padding: 1.2em 1em 1em;
+    font-size: 1.4em;
+    font-weight: 500;
+}
+
+.note-content p {
+    padding: 1em 1.12em .5em;
+}
+
+.note-date {
+    padding: 0 2.2em 1.2em !important;
+    font-size: .55em;
+    text-align: right;
+    color: #424242;
 }

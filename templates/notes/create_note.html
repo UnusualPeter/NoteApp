@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block form %}
+    <div class="row mb mt">
+        <div class="col s12 m8 l4 offset-l4">
+            <div class="input-field">
+                <h3>Crea una nueva nota</h3>
+                <form action="{% url 'notes:new_note' %}" method="post">
+                    {% csrf_token %}
+                    <div class="input-field">
+                        <input id="title-note" type="text" name="title-note" data-length="100">
+                        <label for="title-note">Título de la nota</label>
+                    </div>
+                    <div class="input-field">
+                        <textarea id="content-note" class="materialize-textarea" name="content-note"></textarea>
+                        <label for="content-note">Contenido de la nota</label>
+                    </div>
+                    <div class="input-field">
+                        <button class="btn waves-effect waves-light" type="submit" name="action">Guardar
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock form %}

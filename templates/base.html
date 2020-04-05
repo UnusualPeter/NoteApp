@@ -12,8 +12,64 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <h1>Testing if everything works correctly!</h1>
+    <nav class="green darken-2 navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo">NoteApp</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="{% url 'notes:home' %}">Principal</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>  
+    <div class="container">
+        {% block form %}
+
+        {% endblock form %}
+
+        <div class="row">
+            <div class="col s12 m6 l4">
+                <div class="note-card z-depth-2">
+                    <div class="note-title">
+                        <i class="material-icons red-text text-accent-3 right">gps_fixed</i>
+                        <h2>Programar en Python</h2>
+                    </div>
+                    <div class="note-content">
+                        <p>Preparar una pizarra de notas con Python, Django, SQLite y subirla al servidor de Heroku</p>
+                        <p class="note-date">27/03/2020 - 16:03</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m6 l4">
+                <div class="note-card z-depth-2">
+                    <div class="note-title">
+                        <i class="material-icons red-text text-accent-3 right">gps_fixed</i>
+                        <h2>Programar en Python</h2>
+                    </div>
+                    <div class="note-content">
+                        <p>Preparar una pizarra de notas con Python, Django, SQLite y subirla al servidor de Heroku</p>
+                        <p class="note-date">27/03/2020 - 16:03</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m6 l4">
+                <div class="note-card z-depth-2">
+                    <div class="note-title">
+                        <i class="material-icons red-text text-accent-3 right">gps_fixed</i>
+                        <h2>Programar en Python</h2>
+                    </div>
+                    <div class="note-content">
+                        <p>Preparar una pizarra de notas con Python, Django, SQLite y subirla al servidor de Heroku</p>
+                        <p class="note-date">27/03/2020 - 16:03</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>
