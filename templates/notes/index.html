@@ -7,6 +7,9 @@
                 <h3>Crea una nueva nota</h3>
                 <form action="{% url 'notes:new_note' %}" method="post">
                     {% csrf_token %}
+                    {% if error_message %}
+                        <div id="error" class="card-panel red accent-3">{{ error_message }}</div>
+                    {% endif %}
                     <div class="input-field">
                         <input id="title-note" type="text" name="title-note" data-length="100">
                         <label for="title-note">Título de la nota</label>
@@ -16,7 +19,7 @@
                         <label for="content-note">Contenido de la nota</label>
                     </div>
                     <div class="input-field">
-                        <button class="btn waves-effect waves-light" type="submit" name="action">Guardar
+                        <button class="btn green darken-2 waves-effect waves-light" type="submit" name="action">Guardar
                             <i class="material-icons right">send</i>
                         </button>
                     </div>
@@ -31,12 +34,30 @@
         <div class="col s12 m6 l4">
             <div class="note-card z-depth-2">
                 <div class="note-title">
-                    <i class="material-icons red-text text-accent-3 right">gps_fixed</i>
+                    <i class="material-icons red-text text-accent-3 note-icon">lens</i>
                     <h2>{{ note.title_note }}</h2>
                 </div>
                 <div class="note-content">
                     <p>{{ note.content_note }}</p>
                     <p class="note-date">{{ note.pub_date|date:"d\/m\/Y \- H\:i" }}</p>
+                </div>
+                <div class="note-methods">
+                    <form action="/" method="post">
+                        {% csrf_token %}
+                        <div class="input-field">
+                            <button class="btn blue darken-2 waves-effect waves-light" type="submit" name="action">
+                                <i class="material-icons">create</i>
+                            </button>
+                        </div>
+                    </form>
+                    <form action="{% url 'notes:delete_note' note.id %}" method="post">
+                        {% csrf_token %}
+                        <div class="input-field">
+                            <button class="btn red accent-3 waves-effect waves-light" type="submit" name="action">
+                                <i class="material-icons">delete</i>
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

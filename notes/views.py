@@ -4,16 +4,13 @@ from django.urls import reverse
 from django.utils import timezone
 
 from .models import Notes
-from .error import EmptyField, MaxCharacters
+from .error import EmptyField, MaxCharacters, NonInteger, ExceedDatabase
 
 
 # Create your views here.
 def home(request):
     notes = Notes.objects.order_by('pub_date')
-    context = {
-        'notes': notes
-    }
-    return render(request, 'notes/index.html', context)
+    return render(request, 'notes/index.html', {'notes': notes})
 
 
 def new_note(request):
@@ -25,16 +22,31 @@ def new_note(request):
     try:
         if not title_note or not content_note:
             raise EmptyField
-        if len(title_note) > 100:
+        elif len(title_note) > 100:
             raise MaxCharacters
     except EmptyField:
         error_message = 'Por favor, el campo no puede estar vacío'
-        print(error_message)
+        notes = Notes.objects.order_by('pub_date')
+        return render(request, 'notes/index.html', {'error_message': error_message, 'notes': notes})
     except MaxCharacters:
         error_message = 'El título no puede contener más de cien caracteres'
-        print(error_message)
+        notes = Notes.objects.order_by('pub_date')
+        return render(request, 'notes/index.html', {'error_message': error_message, 'notes': notes})
     else:
         # Use the Notes to create a new object and save it to the database
         Notes.objects.create(title_note=title_note, content_note=content_note, pub_date=date_note)
 
     return HttpResponseRedirect(reverse('notes:home'))
+
+
+def delete_note(request, note_id):
+    try:
+        last_note = Notes.objects.order_by('-pub_date')[0].id
+        if note_id > last_note:
+            raise ExceedDatabase
+    except ExceedDatabase:
+        print("This id doesn't exist in the database")
+    else:
+        note = Notes.objects.get(pk=note_id)
+        note.delete()
+        return HttpResponseRedirect(reverse('notes:home'))

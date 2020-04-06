@@ -11,3 +11,13 @@ class EmptyField(Error):
 class MaxCharacters(Error):
     # Raised when the input title note has more than 100 characters
     pass
+
+
+class NonInteger(Error):
+    # Raised when the field doesn't retrieve an integer
+    pass
+
+
+class ExceedDatabase(Error):
+    # Raised when exceeded the id number of the table
+    pass

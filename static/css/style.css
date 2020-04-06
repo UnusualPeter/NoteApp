@@ -23,6 +23,22 @@ h3 {
     }
 }
 
+.red.accent-3 {
+    color: #e5e5e5;
+}
+
+.btn.green.darken-2:hover {
+    background-color: #43a047 !important;
+}
+
+.btn.blue.darken-2:hover {
+    background-color: #039be5 !important;
+}
+
+.btn.red.accent-3:hover {
+    background-color: #d50000 !important;
+}
+
 /* From for notes */
 /*
 input[type="text"]:not(.browser-default):focus:not([readonly]),
@@ -51,8 +67,14 @@ label.active {
     color: #F44336 !important;
 }
 
+i.right {
+    margin-left: .4em;
+}
+
 /* Notes */
 .note-card {
+    position: relative;
+    min-height: 280px;
     margin-bottom: 2em;
     background-color: #f4ff81;
 }
@@ -63,23 +85,44 @@ label.active {
 }
 
 .note-title i {
-    padding: .25em;
+    display: block;
+    padding: .2em;
+    text-align: center;
 }
 
 .note-title h2 {
     margin: 0;
-    padding: 1.2em 1em 1em;
+    padding: .75em 1em 1em;
     font-size: 1.4em;
     font-weight: 500;
 }
 
 .note-content p {
     padding: 1em 1.12em .5em;
+    margin: 0;
 }
 
 .note-date {
-    padding: 0 2.2em 1.2em !important;
+    padding: 0 2.2em !important;
     font-size: .55em;
     text-align: right;
     color: #424242;
+}
+
+.note-methods {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: right;
+    padding: .75em 1.2em 1.5em;
+}
+
+.note-methods form:first-child {
+    margin-right: 1em;
+}
+
+.note-methods .input-field {
+    margin-top: 0;
+    margin-bottom: 0;
 }
