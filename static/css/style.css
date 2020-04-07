@@ -39,15 +39,11 @@ h3 {
     background-color: #d50000 !important;
 }
 
-/* From for notes */
-/*
-input[type="text"]:not(.browser-default):focus:not([readonly]),
-textarea.materialize-textarea:focus:not([readonly]) {
-    border-bottom: 1px solid #388E3C;
-    box-shadow: 0 1px 0 0 #388E3C;
+.error-edit {
+    margin-bottom: 2em;
 }
-*/
 
+/* Form for notes */
 .input-field input[type=text]:focus,
 .materialize-textarea:focus {
     border-bottom: 1px solid #388E3C !important;

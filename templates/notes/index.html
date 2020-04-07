@@ -42,7 +42,7 @@
                     <p class="note-date">{{ note.pub_date|date:"d\/m\/Y \- H\:i" }}</p>
                 </div>
                 <div class="note-methods">
-                    <form action="/" method="post">
+                    <form action="{% url 'notes:edit_note' note.id %}" method="post">
                         {% csrf_token %}
                         <div class="input-field">
                             <button class="btn blue darken-2 waves-effect waves-light" type="submit" name="action">
